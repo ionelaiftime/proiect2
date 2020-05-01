@@ -1,5 +1,7 @@
-<h1>Chestionar</h1>
-<form action="/rezultat-chestionar" method="post">
+<link rel="stylesheet" type="text/css" href="cssdir/stil.css" />
+
+<h1 style="color:chocolate;text-align: center;background-color:gainsboro;">Chestionar</h1>
+<form  style="background-color:burlywood;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;display: block;margin: auto;",action="/rezultat-chestionar" method="post">
 
     <% for(let i=0;i<intrebari.length;i++){ %>
         <p><%- intrebari[i].intrebare %></p>
@@ -7,5 +9,7 @@
             <input type="radio" name="q <%- i %>" value="<%- j %>"/><%- intrebari[i].variante[j] %> <br/>
         <%} %>
     <% } %>
-    <input type="submit" value="trimite"/>    
+    <input type="submit" value="trimite" style="border-radius: 12px;box-sizing: border-box;padding:0.9em 2.8em;background-color:peachpuff;margin-right:10px;display: block;
+    max-width: 300px;
+    margin: auto;"/>    
 </form>
