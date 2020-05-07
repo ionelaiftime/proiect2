@@ -1,5 +1,6 @@
 'use strict';
 const express = require('express');
+var cookieParser = require('cookie-parser')
 const expressLayouts = require('express-ejs-layouts');
 const bodyParser = require('body-parser')
 
@@ -59,22 +60,22 @@ app.set('view engine', 'ejs');
 // suport pentru layout-uri - implicit fișierul care reprezintă template-ul site-ului este views/layout.ejs
 app.use(expressLayouts);
 // directorul 'public' va conține toate resursele accesibile direct de către client (e.g., fișiere css, javascript, imagini)
-app.use(express.static('public'))
+app.use(express.static('public'));
 // corpul mesajului poate fi interpretat ca json; datele de la formular se găsesc în format json în req.body
 app.use(bodyParser.json());
 // utilizarea unui algoritm de deep parsing care suportă obiecte în obiecte
 app.use(bodyParser.urlencoded({ extended: true }));
 
-//app.use(cookieParser())
+app.use(cookieParser());
 
 // la accesarea din browser adresei http://localhost:6789/ se va returna textul 'Hello World'
 // proprietățile obiectului Request - req - https://expressjs.com/en/api.html#req
 // proprietățile obiectului Response - res - https://expressjs.com/en/api.html#res
-app.get('/', (req, res) => res.render('index'));
-
+app.get('/', (req, res) => res.render('index',{utilizator:req.cookies["utilizator"]}));
+app.get('/autentificare', (req, res) => res.render('autentificare',{mesajEroare:req.cookies["mesajEroare"]}));
 // la accesarea din browser adresei http://localhost:6789/chestionar se va apela funcția specificată
 
-app.get('/autentificare', (req, res) => res.render('autentificare'));
+//app.get('/autentificare', (req, res) => res.render('autentificare'));
 
 
 app.get('/chestionar', (req, res) => {
@@ -98,9 +99,23 @@ app.get('/chestionar', (req, res) => {
 
 
 app.post('/verificare-autentificare', (req, res) => {
-  
-  console.log(req.body);
-  res.json(req.body);
+  let json=JSON.stringify(req.body);
+  var a =JSON.parse(json);
+  console.log(a.uname);
+  if(a.uname=='Utilizator' && a.psw=='parola')
+  {
+    res.cookie("utilizator",a.uname);
+    res.redirect('/');
+   console.log("aici");
+  }
+  else
+  {
+    res.cookie("mesajEroare","Autentificare eronata");
+    res.redirect('/autentificare');
+    console.log("nu");
+  }
+  //console.log(req.body);
+ // res.json(req.body);
 });
 
 
