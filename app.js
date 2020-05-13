@@ -90,7 +90,7 @@ app.get('/chestionar', (req, res) => {
 
 
 
-	// în fișierul views/chestionar.ejs este accesibilă variabila 'intrebari' care conține vectorul de întrebări
+	// în fișierul views/chestionar.ejs este accesibilă variabila 'intrebari' care conține vectorul de întrebărirtrhttg
 
  
 });
