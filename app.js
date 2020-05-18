@@ -17,7 +17,7 @@ const port = 6789;
 var listaIntrebari=[];
 
 app.use(session({
-  key: 'user_sid',
+  key: 'user',
   secret:'secret',
   resave:false,
   saveUninitialized:false,
@@ -30,51 +30,6 @@ app.use(session({
 
 session.utilizator=null;
 
-
-
-/*const listaIntrebari = [
-  {
-    intrebare: 'Tastatura este un dispozitiv periferic de intrare:',
-    variante: ['Adevarat', 'Fals'],
-    corect: 0
-  },
-  {
-    intrebare: 'Care din următoarele dispozitive periferice sunt dispozitive de intrare?',
-    variante: ['Mouse', 'Monitor','Imprimanta','Boxe'],
-    corect: 0
-  },
-  {
-    intrebare: 'Monitorul este un dispozitiv periferic de ieșire',
-    variante: ['Adevarat', 'Fals'],
-    corect: 0
-   
-  },
-  {
-    intrebare: 'Dispozitivele de intrare sunt acele dispozitive cu ajutorul cărora',
-    variante: ['calculatorul transmite informații către utilizator', 'utilizatorul transmite comenzi către calculator','utilizatorul se conectează la internet','calculatorul funcționează normal'],
-    corect: 1
-   
-  },
-  {
-    intrebare: 'Calculatorul este un ansamblu de:',
-    variante: ['componente hardware', 'componente software','componente hardware și software','componente electronice'],
-    corect: 2
-   
-  },
-  {
-    intrebare: 'HardDisk-ul, cardul de memorie, CD-ul, memory stick-ul sunt',
-    variante: ['dispozitive de stocare magnetice', 'dispozitive de stocare','dispozitive de stocare optice','dispozitive de stocare electronice'],
-    corect: 1
-   
-  },
-
-  
-
-  //...
-];
-
-
-*/
 // directorul 'views' va conține fișierele .ejs (html + js executat la server)
 
 
@@ -96,7 +51,7 @@ app.set('trust proxy', 1)
 var mysql = require('mysql');
 
 var con = mysql.createConnection({
-  host: "localhost",
+  host: "127.0.0.1",
   user: "root",
   password: "1235",
   database:"perifericepc"
@@ -108,7 +63,7 @@ var con = mysql.createConnection({
 // proprietățile obiectului Response - res - https://expressjs.com/en/api.html#res
 app.get('/', (req, res) =>
 {
-  con.query("select * from produse1",function(err,result,fields)
+  con.query("select * from produse",function(err,result,fields)
   {
     if(err) throw err;
     console.log(result);
@@ -148,31 +103,33 @@ app.get('/autentificare', (req, res) =>
 
 app.get('/creare-bd', (req, res) => 
 {
-  con.connect(function(err) {
-    if (err) throw err;
+  
     console.log("Connected!");
-    var sql = "CREATE TABLE produse1 (nume VARCHAR(255), pret VARCHAR(255))";
+    var sql = "CREATE Schema IF NOT EXISTS perifericepc";
+    con.query(sql, function (err, result) {
+      if (err) throw err;
+      console.log("Database created");
+    });
+    var sql = "CREATE TABLE IF NOT EXISTS perifericepc.produse(nume varchar(20),pret decimal(10));";
     con.query(sql, function (err, result) {
       if (err) throw err;
       console.log("Table created");
     });
+    res.redirect('/');
   });
-  res.redirect('/');
+ 
 
-
-});
 
 app.get('/inserare-bd', (req, res) => 
 {
-  con.connect(function(err) {
-    if (err) throw err;
+  
     console.log("Connected!");
-    var sql = "INSERT INTO produse1 (nume, pret) VALUES ('Tastatura', '44')";
+    var sql = "INSERT INTO produse (nume, pret) VALUES ('Cablu2', '24');";
     con.query(sql, function (err, result) {
       if (err) throw err;
       console.log("1 record inserted");
     });
-  });
+  
   res.redirect('/');
 
 });
