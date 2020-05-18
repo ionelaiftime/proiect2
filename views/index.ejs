@@ -1,19 +1,50 @@
 <!DOCTYPE html>
 <html>
     <head>
-     
         <title >
             PW-Proiect 2
         </title>
     </head>
     <body style="background-color: gainsboro;" >
-        <header >
-                       
+        <header style="float: right;text-align: center;margin-right: 60px;" >
+          <a href="/autentificare" >Autentificare</a>   
+              
+        
+          <main style="background-color:burlywood;">
+          <% if(utilizator!=null) {%>
+
+
+        
+          <h1 style="float:right;font-size:20px;">
+             Logat ca <%- utilizator.prenume-%> <%-utilizator.nume-%>!
+          </h1>
+
+          <%} %>
+          <form action="logout" method="get">
+           <input type="submit" value="logout" style="border-radius: 12px;box-sizing: border-box;padding:0.6em 2.8em;background-color:peachpuff;margin-right:10px;max-width: 300px; margin: auto;"/> 
+          </form>
         </header>
-        <main style="background-color:burlywood;">
-        <h1>  Bine ai venit,<%-utilizator-%>.</h1>
-            <a href="/autentificare" >Autentificare</a>
+        <h1 style="text-align: center;">
+          Periferice pc
+        </h1>
+        <div style="text-align: center;padding-bottom: 20px;">
+        <a href="/index" style="margin-right: 20px;">Home </a>  
+        <a href="/chestionar" >Chestionar</a>   
+        </div>
+
+        <form action="creare-bd" method="get" style="display: inline-block;">
+          <input type="submit" value="Creare BD" style="border-radius: 12px;box-sizing: border-box;padding:0.9em 2.8em;background-color:peachpuff;max-width: 300px;  display: inline-block;margin-left: 480px;"/> 
+        </form>
+        <form action="inserare-bd" method="get"style="display: inline-block;">
+          <input type="submit" value="Incarcare BD" style="border-radius: 12px;box-sizing: border-box;padding:0.9em 2.8em;background-color:peachpuff;;display: inline-block;max-width: 300px; "/> 
+        </form>     
+        <form action="/" method="get">
+               
+        </form>
+              
+            
         </main>
+        
         <footer>
 
         </footer>

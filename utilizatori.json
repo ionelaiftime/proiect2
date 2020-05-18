@@ -1,0 +1,14 @@
+[
+    { 
+        "utilizator": "test", 
+        "parola": "test",
+        "nume":"ana",
+        "prenume":"maria"},
+    { 
+        "utilizator": "test1", 
+        "parola": "test1",
+        "nume":"ana1",
+        "prenume":"maria1"}
+
+
+]
