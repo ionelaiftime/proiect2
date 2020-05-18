@@ -2,13 +2,13 @@
     { 
         "utilizator": "test", 
         "parola": "test",
-        "nume":"ana",
-        "prenume":"maria"},
+        "nume":"Iftime",
+        "prenume":"Maria"},
     { 
         "utilizator": "test1", 
         "parola": "test1",
-        "nume":"ana1",
-        "prenume":"maria1"}
+        "nume":"Mihnea",
+        "prenume":"Mirel"}
 
 
 ]

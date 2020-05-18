@@ -63,29 +63,31 @@ var con = mysql.createConnection({
 // proprietățile obiectului Response - res - https://expressjs.com/en/api.html#res
 app.get('/', (req, res) =>
 {
+
   con.query("select * from produse",function(err,result,fields)
   {
     if(err) throw err;
-    console.log(result);
+   // console.log(result);
+    
     result.forEach( (result) => {
-      console.log(`${result.nume} price ${result.pret}`);
+      //console.log(`${result.nume} price ${result.pret}`);
       //res.send(result);
      
     });
   
-    
-  })
-   res.render('index',{utilizator:session.utilizator});
-
+    res.render('index',{result,utilizator:session.utilizator});
+  });
    
 }
 );
 
 app.get('/index',(req,res) =>
 {
-  res.render('index',{utilizator:session.utilizator});
-}
-);
+
+    res.render('index',{utilizator:session.utilizator});
+
+  
+});
 app.get('/logout',(req,res) =>
 {
   session.utilizator=null;
@@ -156,7 +158,7 @@ app.post('/verificare-autentificare', (req, res) => {
     for(let i=0;i<listaUtilizatori.length;i++)
     {
   
-    console.log(listaUtilizatori);
+   //console.log(listaUtilizatori);
       if(req.body.utilizator==listaUtilizatori[i].utilizator&&req.body.password==listaUtilizatori[i].parola)
       {
         
@@ -194,7 +196,7 @@ app.post('/rezultat-chestionar', (req, res) => {
       b++;
     
   }
-  console.log(b);
+  //console.log(b);
   res.render('rezultat-chestionar',{intrebari: listaIntrebari,Raspunsuri_corecte:b,utilizator:session.utilizator});
 });
  
