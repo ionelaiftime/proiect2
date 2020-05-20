@@ -117,7 +117,7 @@ app.get('/creare-bd', (req, res) =>
       if (err) throw err;
       console.log("Connected cumparaturi!");
     }); 
-    var sql = "CREATE TABLE IF NOT EXISTS produse( id INT NOT NULL AUTO_INCREMENT primary key NOT NULL,nume varchar(20)NOT NULL,pret decimal(10));";
+    var sql = "CREATE TABLE IF NOT EXISTS produse( idProdus INT NOT NULL AUTO_INCREMENT primary key NOT NULL,nume varchar(20)NOT NULL,pret decimal(10));";
     con.query(sql, function (err, result) {
       if (err) throw err;
       console.log("Table created");
@@ -131,7 +131,7 @@ app.get('/inserare-bd', (req, res) =>
 {
   
     console.log("Connected!");
-    var sql = "INSERT INTO produse (nume, pret) VALUES ('Cablu2', '24');";
+    var sql = "INSERT INTO produse (nume, pret) VALUES ('Tastatura', '44');";
     con.query(sql, function (err, result) {
       if (err) throw err;
       console.log("1 record inserted");
@@ -230,7 +230,7 @@ app.get('/vizualizare-cos',(req,res) =>{
   var a=[];
   for(let i=0;i<session.cos.length;i++)
   {
-    a.push(session.cos[i].id);
+    a.push(session.cos[i].idProdus);
 
   }
   console.log(a);

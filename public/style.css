@@ -1,22 +1,19 @@
 body
 {
-    background-color: gainsboro;
+    background-color: #214731;
 }
 
 header
 {
     float: right;text-align: center;margin-right: 60px;
+    background-color:rgb(87, 119, 96);
 }
 
 main
 {
-    background-color:burlywood;
+    background-color:rgb(87, 119, 96);
 }
 
-.cos
-{
-    text-align: center;padding-bottom: 20px;
-}
  
 
 .log
@@ -29,7 +26,7 @@ main
      border-radius: 12px;
      box-sizing: border-box;
      padding:0.3em 2.8em;
-     background-color:peachpuff;
+     background-color:rgb(87, 119, 96);
      margin-right:10px;
      max-width: 300px; 
      margin: auto;
@@ -40,7 +37,7 @@ main
     border-radius: 12px;
     box-sizing: border-box;
     padding:0.9em 2.8em;
-    background-color:peachpuff;
+    background-color:rgb(87, 119, 96);
     margin-right:10px;
     display: block;
     max-width: 300px; 
@@ -52,7 +49,7 @@ main
     border-radius: 12px;
     box-sizing: border-box;
     padding:0.8em 2.2em;
-    background-color:peachpuff;
+    background-color:rgb(87, 119, 96);
     max-width: 300px;  
     display: inline-block;
     margin-left: 600px;
@@ -63,27 +60,51 @@ main
     border-radius: 12px;
     box-sizing: border-box;
     padding:0.8em 1.7em;
-    background-color:peachpuff;
+    background-color:rgb(87, 119, 96);
     display: inline-block;
     max-width: 300px; 
 
 }
 .titlu
 {
-    color:chocolate;
+    color:rgb(0, 0, 0);
     text-align: center;
     padding-top: 100px;
 }
 
-.nav1
-{
+
+
+.nav1 {
+    
+    overflow: hidden;
+    background-color:rgb(23, 51, 31);
     text-align: center;
-    padding-bottom: 20px;
-}
+  }
+  
+.nav1 a {
+    display: inline-block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .nav1 a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  @media screen and (max-width: 700px) {
+    .nav1 a{
+        display: block;
+    }
+  }
+
 
 .chestionar
 {
-    background-color:burlywood;
+    background-color:rgb(87, 119, 96);
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     display: block;
     margin: auto;
