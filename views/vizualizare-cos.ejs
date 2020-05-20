@@ -1,0 +1,34 @@
+<header >
+         
+              
+        
+          <% if(utilizator!=null) {%>
+          <h1 class="log">
+             Logat ca <%- utilizator.prenume-%> <%-utilizator.nume-%>!
+             <form action="logout" method="get">
+                <input type="submit" value="logout" class="btnlogout" /> 
+             </form>
+          </h1>
+
+          <%} %>
+        
+</header>
+
+        <main>
+        <h1 class="titlu">
+            Cos cumparaturi
+        </h1>
+
+        <div class="cos">
+        <a href="/index" style="margin-right: 20px; ">Home </a> 
+        <a href="/autentificare" style="margin-right: 20px; " >Autentificare</a>    
+        <a href="/chestionar" style="margin-right: 20px;">Chestionar</a>   
+        <a href="/vizualizare-cos" >Cos</a>   
+        </div>     
+            
+        </main>
+        
+        <footer>
+
+        </footer>
+

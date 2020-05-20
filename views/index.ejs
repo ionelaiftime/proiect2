@@ -1,75 +1,50 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title >
-            PW-Proiect 2
-        </title>
-    </head>
-    <body style="background-color: gainsboro;" >
-        <header style="float: right;text-align: center;margin-right: 60px;" >
-          <a href="/autentificare" >Autentificare</a>   
-              
-        
-          <main style="background-color:burlywood;">
-          <% if(utilizator!=null) {%>
-          <h1 style="float:right;font-size:20px;">
-             Logat ca <%- utilizator.prenume-%> <%-utilizator.nume-%>!
-          </h1>
+<header  >
+  
+  <% if(utilizator!=null) {%>
+  <h1 class="log">
+    Logat ca <%- utilizator.prenume-%> <%-utilizator.nume-%>!
+    <form action="logout" method="get">
+      <input type="submit" value="logout" class="btnlogout" /> 
+    </form>
+  </h1>
+  <%} %>
 
-          <%} %>
+</header>
+<main>
+  <h1 class="titlu">Periferice pc</h1>
 
-         
-          <form action="logout" method="get">
-           <input type="submit" value="logout" style=" line-height: 2.5;border-radius: 12px;box-sizing: border-box;padding:0.3em 2.8em;background-color:peachpuff;margin-right:10px;max-width: 300px; margin: auto;"/> 
-          </form>
-        </header>
-        <h1 style="text-align: center;">
-          Periferice pc
-        </h1>
-        <div style="text-align: center;padding-bottom: 20px;">
-        <a href="/index" style="margin-right: 20px; ">Home </a>  
-        <a href="/chestionar" >Chestionar</a>   
-        </div>
+  <div class="nav1">
+    <a href="/index" style="margin-right: 20px; ">Home </a> 
+    <a href="/autentificare" style="margin-right: 20px; " >Autentificare</a>    
+    <a href="/chestionar" style="margin-right: 20px;">Chestionar</a>   
+    <a href="/vizualizare-cos" >Cos</a>   
+  </div>
 
-        <form action="creare-bd" method="get" style="display: inline-block;">
-          <input type="submit" value="Creare BD" style="border-radius: 12px;box-sizing: border-box;padding:0.9em 2.8em;background-color:peachpuff;max-width: 300px;  display: inline-block;margin-left: 480px;"/> 
-        </form>
-        <form action="inserare-bd" method="get"style="display: inline-block;">
-          <input type="submit" value="Incarcare BD" style="border-radius: 12px;box-sizing: border-box;padding:0.9em 2.8em;background-color:peachpuff;;display: inline-block;max-width: 300px; "/> 
-        </form>     
-        <form action="/" method="get">
-               
-        </form>
+  <form action="creare-bd" method="get" style="display: inline-block; margin-left: 30px;">
+    <input type="submit" value="Creare BD" class="btncreare"/> 
+  </form>
+  <form action="inserare-bd" method="get"style="display: inline-block;">
+    <input type="submit" value="Incarcare BD" class="btninserare"/> 
+  </form>     
+       
+  <div class="produs">
 
-        <div  style=" display: grid;margin-top: 40px;text-align: center; font-size: large;
-        grid-column-gap: 50px;
-        grid-row-gap:50px ;
-        grid-template-columns: auto auto auto;
-        padding: 2px;">
-
-          <% for(let i=0;i<result.length;i++){ 
-            %>
-            <div style="border: 1px solid black;border-width: medium;border-radius: 25px;">
-            <h1 style="font-size: 30px;"><p><%- result[i].nume %></p></h1>
-            <p>Pret:<%- result[i].pret %></p>&ensp;
-
+    <% for(let i=0;i<result.length;i++) {%>
+      <div class="produsdet">
+          <h1 style="font-size: 30px;"><p><%- result[i].nume %></p></h1>
+          <p>Pret:<%- result[i].pret %></p>&ensp;
+          <form action="/adaugare_cos" method="post">
             <% if(utilizator!=null) {%>
-              <input type="submit" value="Adauga in cos" style="border-radius: 12px;box-sizing: border-box;padding:0.9em 2.8em;background-color:peachpuff;;display: inline-block;max-width: 300px; "/> 
-    
-              <%} %>
-    
-
-            
-          </div>
-          <%} %>
-        </div>
-              
-            
-        </main>
+            <input type="submit" value="Adauga in cos" class="btnsubmit"/> 
+            <input type="hidden" name="id" id='custId' value="<%-result[i].idProdus-%>">
+            <%} %>
+          </form>
+      </div>
+    <%} %>
+  </div>
+                   
+</main>
         
-        <footer>
-
-        </footer>
-    </body>
-</html>
+<footer>
+</footer>
 
