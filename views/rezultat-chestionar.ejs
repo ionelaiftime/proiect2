@@ -11,12 +11,7 @@
 </header>
 <main >
     <h1 class="titlu">Rezultat Chestionar</h1>
-    <div class="nav1">
-        <a href="/index" >Home </a> 
-        <a href="/autentificare" >Autentificare</a>    
-        <a href="/chestionar" >Chestionar</a>   
-        <a href="/vizualizare-cos" >Cos</a>   
-    </div>
+   
     <form  class="chestionar" action="/rezultat-chestionar" method="POST">
         <% for(let i=0;i<intrebari.length;i++){ %>
         <p><%- intrebari[i].intrebare %></p>
